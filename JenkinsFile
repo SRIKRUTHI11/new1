@@ -1,0 +1,11 @@
+node{
+    stage('scm'){
+        git 'https://github.com/daticahealth/java-tomcat-maven-example.git'
+    }
+    stage('maven'){
+        sh 'mvn package'
+    }
+    stage('archive'){
+        archiveArtifacts artifacts: 'target/java-tomcat-maven-example.war', followSymlinks: false
+    }
+}
